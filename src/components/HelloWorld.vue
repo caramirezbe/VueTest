@@ -3,6 +3,27 @@
     <v-toolbar flat color="blue">
       <v-toolbar-title>My Document</v-toolbar-title>
     </v-toolbar>
+
+    <v-row no-gutters>
+      <v-col
+        v-for="n in 3"
+        :key="n"
+        cols="12"
+        md="4"
+        
+      >
+        <v-card
+          class="pa-2"
+          outlined
+          tile
+        >
+          One of three columns
+        </v-card>
+      </v-col>
+    </v-row>
+
+
+
     <v-form>
       <v-col cols="4">
         <v-text-field
@@ -106,3 +127,7 @@ export default {
 }
 
 </script>
+<style>
+
+</style>
+

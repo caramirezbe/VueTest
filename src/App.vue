@@ -1,19 +1,20 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+      
+      <PwdChange/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import PwdChange from './components/PwdChange';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    PwdChange,
   },
 
   data: () => ({
