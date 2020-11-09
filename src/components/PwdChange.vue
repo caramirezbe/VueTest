@@ -6,7 +6,9 @@
     
     <v-form>
         <v-row>
-            <v-col cols='6'>
+            <v-col cols='4'>
+            </v-col>
+            <v-col cols='4'>
                 <v-text-field
                     v-model="oldPwd"
                     label="Current Password"
@@ -25,15 +27,16 @@
                     :counter="10"
                     required              
                 ></v-text-field>
+                <v-btn @click="checkPwd()" color="primary">Submit</v-btn>
             </v-col>
-            <v-col cols='6'>
+            <v-col cols='4'>
                 <v-alert
                     :type="mType"
 
                 >{{message}} </v-alert>
                 
             </v-col>
-            <v-btn @click="checkPwd()" color="primary">Submit</v-btn>
+            
         </v-row>
     </v-form>
 

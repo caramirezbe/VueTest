@@ -2,19 +2,19 @@
   <v-app>
     <v-main>
       
-      <PwdChange/>
+      <EvenOrOdd/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import PwdChange from './components/PwdChange';
+import EvenOrOdd from './components/EvenOrOdd';
 
 export default {
   name: 'App',
 
   components: {
-    PwdChange,
+    EvenOrOdd,
   },
 
   data: () => ({
