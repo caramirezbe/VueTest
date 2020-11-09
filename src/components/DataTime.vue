@@ -21,8 +21,7 @@
                 </v-col>
                 <v-col cols=4>
                     {{this.message = date1}}
-                    {{this.message = date2}}
-                    {{year}}
+                    {{this.message = date2}}                
                     
                 </v-col>
 
@@ -44,16 +43,30 @@ export default {
         return {
             date1: new Date().toISOString().substr(0,10),
             date2: new Date().toISOString().substr(0,10),
+            date3: new Date(),
         }   
     }, 
 
     methods:{
     
     dayPicker(){
-        this.day= parseInt(this.date1)
-        console.log(this.year)
+        /*console.log(this.date1.replace( /-/gi, ''))
+        let day= this.date1.slice(8, 10)
+        console.log(parseInt(day))*/
+            let n = 20
+            let i = 2
+            while(i <= n){
+                if(n%i === 0){
+                    console.log(' i ' + i)
+                    n = n/2
+                    console.log('num' + n)
+                    }
+                else i++ 
+            }
 
-    },
+            
+
+        }
 
 
     },

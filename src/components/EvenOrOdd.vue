@@ -22,13 +22,14 @@ Read two integers:
                         v-model.number="number2"
                         label="Number 2"
                     ></v-text-field>
-                    <v-btn @click="checkPrime(number1) + checkPrime2() + oddEven()+ primeF(number1)" 
+                    <v-btn @click="checkPrime() + checkPrime2() + oddEven() + printFactor() + sumPrimeF() + amicable() + coprime()" 
                     class="primary">Submit</v-btn>
                 </v-col>
                 <v-col cols='4'>
                
-                <v-alert>{{message1 + '  ' + message2}}</v-alert>
-                <v-alert>{{message3 + '  ' + message4}}</v-alert>
+                <v-alert>{{ message1 + '  ' + message3 + message5}}</v-alert>
+                <v-alert>{{ message2 + '  ' + message4 + message6}}</v-alert>
+                <v-alert>{{ message7 }}</v-alert>
             </v-col>
             </v-row>
         </v-form>
@@ -43,13 +44,16 @@ export default {
         return {
             number1:0,
             number2:0,
+            array1:[],
+            array2:[],
             message1:'',
             message2:'',
             message3:'',
             message4:'',
-            pArray:[],
-            
-            
+            message5:'',
+            message6:'',
+            message7:'',
+            message8:'',
         }
     },
 
@@ -63,62 +67,112 @@ export default {
             return true  
         },
 
-        Even(num){
-            if(num%2 === 0)
+        even(num){
+            if(num%2 === 0){
                 return true
-            else
+            }
+            else{
                 return false
+            }
         }, 
 
-    /*  primeF(factor){
-            let x = 2;
-            while(x <= factor )
-                if (factor%x === 0){
-                    factor = factor/2
-                    pArray.push[x]
+        primeF(num){
+            let i = 2
+            const pArray = [] 
+            while(i <= num){
+                if(num%i === 0){
+                    pArray.push(i)
+                    num = num/i
                     }
-                elseif (prime(x) === true){
-                        pArray.push[x]
-                        x = factor
-                        }
-                    x = x + 1
-        },*/
+                else{ 
+                i++}        
+           }
+           return pArray
+         },
 
-    
-
-        checkPrime(num){
-            
-            for(let i = 2; i < num; i++ ){    
-                if (num % i === 0)
-                    
-                  return this.message1 = num + ' is not Prime '    
+        sumPrimeF(){
+            const pArray = this.primeF(this.number1)
+            let sum = 0
+            for(let x=0; x<pArray.length; x++){
+                sum = sum + pArray[x]
             }
-            return this.message1 = num + ' is a Prime'      
+            return sum
         },
 
-        checkPrime2(){
-            
-            for(let i = 2; i < this.number2; i++ ){
-                if (this.number2 % i === 0)
-                   return this.message2 = this.number2 + ' is not Prime '    
+        sumAmicable(num){
+            const dArray = []
+            let sum = 0
+            for(let x = 0; x < num; x++){
+                if(num%x ===0){
+                    dArray.push(x)
+                    sum += x
+                }
             }
-            return this.message2 = this.number2 + ' is a Prime'      
+            return sum
         },
 
+        coprime(){
+            const small = this.number1 > this.number2 ? this.number1 : this.number2;
+            console.log(small)
+            for(let x = 2; x < small; x++){
+                const a = this.number1%x === 0;
+                const b = this.number2%x === 0;
+                if(a && b){
+                    this.message8 = ' no are coprimes '  
+                }
+            }
+            this.message8 = ' are comprimes'
+
+        },
+
+
+
+        amicable(){
+           if(this.sumAmicable(this.number1) === this.number2 && this.sumAmicable(this.number2) === this.number1){
+                this.message7 = this.number1 + ' and ' + this.number2 + ' are amicable '
+            }
+            else { this.message7 = this.number1 + ' and ' + this.number2 + ' are not amicable ' }
+        },
+
+
+        checkPrime(){       
+            if(this.prime(this.number1)){
+                this.message1 = 'It is prime'
+            }
+            else {
+                this.message1 = 'It is not prime'
+            }      
+        },
+
+       checkPrime2(){       
+            if(this.prime(this.number2)){
+                this.message2 = ' is prime'
+            }
+            else {this.message2 = ' is not prime'
+            }
+        },
 
         oddEven(){
-            if(this.number1%2 === 0)
-                this.message3 = this.number1 + ' is even'
-                               
-            else
-                this.message3 = this.number1 + ' is odd'          
-            if(this.number2%2 === 0)
-                this.message4 = this.number2 + ' is even' 
-            else
-                this.message4 = this.number2 + ' is odd' 
+            if(this.even(this.number1)){
+                this.message3 = ', is even'
+                } 
+            else{
+                this.message3 = ', is odd'
+                }
+            if(this.even(this.number2)){
+                this.message4 = ', is even' 
+                }
+            else{
+                this.message4 = ', is odd' 
+                }
         },
-    }
 
+        printFactor(){
+            this.message5 = ', is prime factors are ' + this.primeF(this.number1)
+            this.message6 = ', is prime factors are ' + this.primeF(this.number2)
+        },
+
+    }
 }
 </script>
 
