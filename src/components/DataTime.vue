@@ -4,74 +4,60 @@
     Show is leap year (write your own function)
     (Bonus) Show if it's the first week of the month. -->
 
+
 <template>
     <v-container>
         <v-toolbar flat color="blue">
-            <v-toolbar-title>Time Problem</v-toolbar-title>
-        </v-toolbar> 
+            <v-toolbar-title>Problems</v-toolbar-title>
+        </v-toolbar>
+        <v-form>
             <v-row>
                 <v-col cols=4>
                     <v-date-picker
-                        v-model="date1"
+                    v-model="date1"
                     ></v-date-picker>
                     <v-date-picker
-                        v-model="date2"
+                    v-model="date2"
                     ></v-date-picker>
-                    <v-btn @click="dayPicker()" class="primary">Submit</v-btn>
+                     <v-btn @click="strDate()" 
+                    class="primary">Submit</v-btn>
                 </v-col>
                 <v-col cols=4>
-                    {{this.message = date1}}
-                    {{this.message = date2}}                
-                    
+                    {{message}}
                 </v-col>
+               
 
 
             </v-row>
-
-
-
+        </v-form>
     </v-container>
-    
-    
 </template>
 
 <script>
 export default {
-    name: 'Datatime',
+    name: 'DataTime',
 
-    data (){
-        return {
-            date1: new Date().toISOString().substr(0,10),
-            date2: new Date().toISOString().substr(0,10),
-            date3: new Date(),
-        }   
-    }, 
-
-    methods:{
-    
-    dayPicker(){
-        /*console.log(this.date1.replace( /-/gi, ''))
-        let day= this.date1.slice(8, 10)
-        console.log(parseInt(day))*/
-            let n = 20
-            let i = 2
-            while(i <= n){
-                if(n%i === 0){
-                    console.log(' i ' + i)
-                    n = n/2
-                    console.log('num' + n)
-                    }
-                else i++ 
-            }
-
-            
-
+    data(){
+        return{
+            date1: new Date().toISOString().substr(0, 10),
+            date2: new Date().toISOString().substr(0, 10),
+            message:'Hola',
         }
-
-
     },
 
+    methods:{
+        
+        strDate(){
+            let iy = this.date1.replace(/-/gi, '').substr(0, 4)
+            let im = this.date1.replace(/-/gi, '').substr(5)
+            let id = this.date1.replace(/-/gi, '').substr(6, 8)
+            console.log('year ' + iy)
+            console.log('month ' + im)
+            console.log('day ' + id)
+        },
+       
+    }
 
-
+    
 }
-</script>
+</script>>
