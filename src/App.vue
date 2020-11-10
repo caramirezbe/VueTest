@@ -1,20 +1,24 @@
 <template>
   <v-app>
     <v-main>
-      
-      <EvenOrOdd/>
+
+      <!--      <EvenOrOdd/>-->
+
+      <Datatime/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import EvenOrOdd from './components/EvenOrOdd';
+// import EvenOrOdd from './components/EvenOrOdd';
+import Datatime from "@/components/DataTime";
 
 export default {
   name: 'App',
 
   components: {
-    EvenOrOdd,
+    Datatime,
+    // EvenOrOdd,
   },
 
   data: () => ({

@@ -6,58 +6,59 @@
 
 
 <template>
-    <v-container>
-        <v-toolbar flat color="blue">
-            <v-toolbar-title>Problems</v-toolbar-title>
-        </v-toolbar>
-        <v-form>
-            <v-row>
-                <v-col cols=4>
-                    <v-date-picker
-                    v-model="date1"
-                    ></v-date-picker>
-                    <v-date-picker
-                    v-model="date2"
-                    ></v-date-picker>
-                     <v-btn @click="strDate()" 
-                    class="primary">Submit</v-btn>
-                </v-col>
-                <v-col cols=4>
-                    {{message}}
-                </v-col>
-               
+  <v-container>
+    <v-toolbar flat color="blue">
+      <v-toolbar-title>Problems</v-toolbar-title>
+    </v-toolbar>
+    <v-form>
+      <v-row>
+        <v-col cols="4">
+          <v-date-picker
+              v-model="date1"
+          ></v-date-picker>
+          <v-date-picker
+              v-model="date2"
+          ></v-date-picker>
+          <v-btn @click="strDate()"
+                 class="primary">Submit
+          </v-btn>
+        </v-col>
+        <v-col cols="4">
+          {{ message }}
+        </v-col>
 
 
-            </v-row>
-        </v-form>
-    </v-container>
+      </v-row>
+    </v-form>
+  </v-container>
 </template>
 
 <script>
 export default {
-    name: 'DataTime',
+  name: 'DataTime',
 
-    data(){
-        return{
-            date1: new Date().toISOString().substr(0, 10),
-            date2: new Date().toISOString().substr(0, 10),
-            message:'Hola',
-        }
+  data() {
+    return {
+      date1: "2020-04-20",
+      date2: new Date().toISOString().substr(0, 10),
+      message: 'Hola',
+    }
+  },
+
+  methods: {
+
+    strDate() {
+      const d = new Date(this.date1); // Convert string to date
+      // let iy = this.date1.replace(/-/gi, '').substr(0, 4)
+      // let im = this.date1.replace(/-/gi, '').substr(5)
+      // let id = this.date1.replace(/-/gi, '').substr(6, 8)
+      // console.log('year ' + iy)
+      // console.log('month ' + im)
+      // console.log('day ' + id)
     },
 
-    methods:{
-        
-        strDate(){
-            let iy = this.date1.replace(/-/gi, '').substr(0, 4)
-            let im = this.date1.replace(/-/gi, '').substr(5)
-            let id = this.date1.replace(/-/gi, '').substr(6, 8)
-            console.log('year ' + iy)
-            console.log('month ' + im)
-            console.log('day ' + id)
-        },
-       
-    }
+  }
 
-    
+
 }
 </script>>
