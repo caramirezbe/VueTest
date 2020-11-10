@@ -29,7 +29,7 @@ Read two integers:
                
                 <v-alert>{{ message1 + '  ' + message3 + message5}}</v-alert>
                 <v-alert>{{ message2 + '  ' + message4 + message6}}</v-alert>
-                <v-alert>{{ message7 }}</v-alert>
+                <v-alert>{{ message7 + ' ' + message8}}</v-alert>
             </v-col>
             </v-row>
         </v-form>
@@ -111,21 +111,27 @@ export default {
             return sum
         },
 
-        coprime(){
+        checkCoprime(){
             const small = this.number1 > this.number2 ? this.number1 : this.number2;
-            console.log(small)
             for(let x = 2; x < small; x++){
                 const a = this.number1%x === 0;
                 const b = this.number2%x === 0;
                 if(a && b){
-                    this.message8 = ' no are coprimes '  
+                    return false
                 }
             }
-            this.message8 = ' are comprimes'
-
+            return true
         },
 
-
+        coprime(){
+            console.log(this.checkCoprime())
+            if(this.checkCoprime()){
+                this.message8 = ', are coprime'
+            }
+            else{
+                this.message8 = ', are not coprime'
+            } 
+        },
 
         amicable(){
            if(this.sumAmicable(this.number1) === this.number2 && this.sumAmicable(this.number2) === this.number1){
