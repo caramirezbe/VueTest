@@ -17,10 +17,13 @@ Read two integers:
                     <v-text-field
                         v-model.number="number1"
                         label="Number 1"
+                        :rules="numberRules"
+
                     ></v-text-field>
                     <v-text-field
                         v-model.number="number2"
                         label="Number 2"
+                        :rules="numberRules"
                     ></v-text-field>
                     <v-btn @click="checkPrime() + checkPrime2() + oddEven() + printFactor() + sumPrimeF() + amicable() + coprime()" 
                     class="primary">Submit</v-btn>
@@ -54,6 +57,10 @@ export default {
             message6:'',
             message7:'',
             message8:'',
+
+            numberRules: [
+                v => v > 0 || 'number have to be positive',],
+
         }
     },
 
